@@ -43,7 +43,7 @@ using Statistics
 using Plots
 # constants 
 const PM = PowerModels
-const SPM = StochasticPowerModels
+# const SPM = StochasticPowerModels
 
 # solvers
 ipopt_solver = Ipopt.Optimizer
