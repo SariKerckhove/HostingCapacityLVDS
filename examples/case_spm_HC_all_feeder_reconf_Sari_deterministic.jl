@@ -224,7 +224,7 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
         devices_json_dict = JSON.parse(io)
         for device in devices_json_dict["LVcustomers"]
             id = device["deviceId"] + 1 #Indexing starts at one in Julia
-            d = device_df[in(id - 1).(device_df.dev_id), :]
+            # d = device_df[in(id - 1).(device_df.dev_id), :]
             id_s = string(id)
             # μ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "lower"][1] ## @Arpan, are mu and sigma here simply lower and upper?
             # σ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "upper"][1]
@@ -248,10 +248,10 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
                 "p_inj" => 0.0,
                 "q_inj" => 0.0,
                 "conn_cap_kW" => device["connectionCapacity"],
-                "dst_id" => d[!, "category"][1],
+                "dst_id" => 0, # d[!, "category"][1],
                 "cluster_id" => 0, #findall(x -> x == 1, [s_dict["$i"]["dst_id"] == d[!, "category"][1] for i = 1:length(s_dict)])[1],
-                "μ" => μ,
-                "σ" => σ)
+                "μ" => 0, #μ,
+                "σ" => 0) # σ)
         end
     end
 
@@ -361,13 +361,13 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
     end
 
 
-    network_model["sdata"] =  "none, deterministic" # s_dict
+    network_model["sdata"] =  0 # s_dict
     network_model["curt"] = curt
 
     network_model["PV"] = deepcopy(network_model["load"])
-    [network_model["PV"][d]["μ"] = "none, deterministic"for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["σ"] = "none, deterministic"  for d in keys(network_model["PV"])]# s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["pd"] = "none, deterministic" for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["μ"] = 0 for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["σ"] = 0  for d in keys(network_model["PV"])]# s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["pd"] = 0 for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
     return network_model
 end;
 
@@ -406,7 +406,7 @@ for b in eachrow(all_feeder)
     print("Feeder no: $i \n")
     #feeder="All_feeder/"*all_feeder[1,"conf"]
     file  = joinpath(BASE_DIR, "test/data/Spanish/")
-    global data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59)
+    data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59)
 
     push!(unc,length(data["sdata"])) # nr of lv+pv distributions considered --> unc
     push!(nodes,length(data["bus"])) # nr of buses --> nodes
@@ -485,7 +485,7 @@ all_feeder[!,"t_opf"]=t_opf
 all_feeder[!,"consumers"]=consumers
 all_feeder[!,"nodes"]= nodes
 all_feeder[!, "unc"] = unc
-CSV.write("PV_HC_feeders_with_start.csv",all_feeder)
+CSV.write("PV_HC_feeders_with_start_deterministic.csv",all_feeder)
 
 # scatter(all_feeder[all_feeder[!, :t_cc] .<500, :].unc, log10.(all_feeder[all_feeder[!, :t_cc] .<500, :].t_cc),label="gPC-CC-OPF", figsize=(28,8))
 # # scatter!([1,2,3,4,5,6,7],[result_hc["solution"]["PV"]["$i"]["p_size"] for i=1:length(data["load"])],label="OPF HC", figsize=(28,8))
