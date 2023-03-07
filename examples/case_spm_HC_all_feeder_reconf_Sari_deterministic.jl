@@ -249,7 +249,7 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
                 "q_inj" => 0.0,
                 "conn_cap_kW" => device["connectionCapacity"],
                 "dst_id" => d[!, "category"][1],
-                "cluster_id" => findall(x -> x == 1, [s_dict["$i"]["dst_id"] == d[!, "category"][1] for i = 1:length(s_dict)])[1],
+                "cluster_id" => 0, #findall(x -> x == 1, [s_dict["$i"]["dst_id"] == d[!, "category"][1] for i = 1:length(s_dict)])[1],
                 "μ" => μ,
                 "σ" => σ)
         end
@@ -361,13 +361,13 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
     end
 
 
-    network_model["sdata"] = s_dict
+    network_model["sdata"] =  "none, deterministic" # s_dict
     network_model["curt"] = curt
 
     network_model["PV"] = deepcopy(network_model["load"])
-    [network_model["PV"][d]["μ"] = s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["σ"] = s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["pd"] = s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["μ"] = "none, deterministic"for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["σ"] = "none, deterministic"  for d in keys(network_model["PV"])]# s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["pd"] = "none, deterministic" for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
     return network_model
 end;
 
