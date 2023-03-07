@@ -61,42 +61,44 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
 
     network_model = Dict{String,Any}()
     configuration_json_dict = Dict{Any,Any}()
-    device_df=CSV.read(dir*config_file_name[1:length(config_file_name)-19]*".csv", DataFrame) #csv file with categories.
+    # device_df=CSV.read(dir*config_file_name[1:length(config_file_name)-19]*".csv", DataFrame) #csv file with categories.
 
-    dist_lv = CSV.read(dir * load_dist_csv, DataFrame) # load_dist_csv
-    dist_pv = CSV.read(dir * pv_dist_csv, DataFrame)
-    # dist_pv=CSV.read(dir*"beta_pm_2022_181"*".csv", DataFrame)
-    dist_pv_ts = dist_pv[in([t_s]).(dist_pv.timeslot), :]
-    dist_lv_ts = dist_lv[in([t_s]).(dist_lv.timeslot), :]
-    # requires the csv file with categories.
+    # dist_lv = CSV.read(dir * load_dist_csv, DataFrame) # load_dist_csv
+    # dist_pv = CSV.read(dir * pv_dist_csv, DataFrame)
+    # # dist_pv=CSV.read(dir*"beta_pm_2022_181"*".csv", DataFrame)
+    # dist_pv_ts = dist_pv[in([t_s]).(dist_pv.timeslot), :]
+    # dist_lv_ts = dist_lv[in([t_s]).(dist_lv.timeslot), :]
+    # # requires the csv file with categories.
 
-    global dist_lv_ts_feeder = dist_lv_ts[in(unique(device_df.category)).(dist_lv_ts.cluster), :]
-    global s_dict = Dict()
-    i = 1
-    for dist in eachrow(dist_lv_ts_feeder)
-        s = Dict()
-        s["dst"] = "Beta"
-        s["dst_id"] = dist["cluster"]
-        s["pa"] = dist["alpha"]
-        s["pb"] = dist["beta"]
-        s["pc"] = dist["lower"]
-        s["pd"] = dist["lower"] + dist["upper"]
-        s_dict[string(i)] = s
-        i = i + 1
-    end
+    # dist_lv_ts_feeder = dist_lv_ts[in(unique(device_df.category)).(dist_lv_ts.cluster), :]
+
+    # s_dict = Dict()
+
+    # i = 1
+    # for dist in eachrow(dist_lv_ts_feeder)
+    #     s = Dict()
+    #     s["dst"] = "Beta"
+    #     s["dst_id"] = dist["cluster"]
+    #     s["pa"] = dist["alpha"]
+    #     s["pb"] = dist["beta"]
+    #     s["pc"] = dist["lower"]
+    #     s["pd"] = dist["lower"] + dist["upper"]
+    #     s_dict[string(i)] = s
+    #     i = i + 1
+    # end
 
 
-    ##add Irradiance if day time or there is some Irradiance
-    if dist_pv_ts.upper[1] > 0
-        s = Dict()
-        s["dst"] = "Beta"
-        s["dst_id"] = 55
-        s["pa"] = dist_pv_ts[!, "alpha"][1]
-        s["pb"] = dist_pv_ts[!, "beta"][1]
-        s["pc"] = dist_pv_ts[!, "lower"][1]
-        s["pd"] = dist_pv_ts[!, "lower"][1] + dist_pv_ts[!, "upper"][1]
-        s_dict[string(i)] = s
-    end
+    # ##add Irradiance if day time or there is some Irradiance
+    # if dist_pv_ts.upper[1] > 0
+    #     s = Dict()
+    #     s["dst"] = "Beta"
+    #     s["dst_id"] = 55
+    #     s["pa"] = dist_pv_ts[!, "alpha"][1]
+    #     s["pb"] = dist_pv_ts[!, "beta"][1]
+    #     s["pc"] = dist_pv_ts[!, "lower"][1]
+    #     s["pd"] = dist_pv_ts[!, "lower"][1] + dist_pv_ts[!, "upper"][1]
+    #     s_dict[string(i)] = s
+    # end
 
 
     #network_model["is_kron_reduced"] = true
@@ -222,10 +224,10 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
         devices_json_dict = JSON.parse(io)
         for device in devices_json_dict["LVcustomers"]
             id = device["deviceId"] + 1 #Indexing starts at one in Julia
-            global d = device_df[in(id - 1).(device_df.dev_id), :]
+            d = device_df[in(id - 1).(device_df.dev_id), :]
             id_s = string(id)
-            μ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "lower"][1] ## @Arpan, are mu and sigma here simply lower and upper?
-            σ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "upper"][1]
+            # μ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "lower"][1] ## @Arpan, are mu and sigma here simply lower and upper?
+            # σ = dist_lv_ts_feeder[in(d[!, "category"][1]).(dist_lv_ts_feeder.cluster), :][!, "upper"][1]
             cons = convert(Float64, device["yearlyNetConsumption"])
             network_model["load"][id_s] = Dict{String,Any}(
                 #"connections"   => vec(Int.(device["phases"])),
@@ -239,8 +241,10 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
                 "index" => id,
                 "yearlyNetConsumption" => cons,
                 #"phases"        => device["phases"],
-                "pd" => max(0.1, μ) / 1e3 / power_base / 3,
-                "qd" => max(0.01, μ) / 1e3 / power_base / 3 / 10,
+                "pd" => 0.1 / 1e3 / power_base / 3,
+                "qd" => 0.01 / 1e3 / power_base / 3 / 10,
+                # "pd" => max(0.1, μ) / 1e3 / power_base / 3,
+                # "qd" => max(0.01, μ) / 1e3 / power_base / 3 / 10,
                 "p_inj" => 0.0,
                 "q_inj" => 0.0,
                 "conn_cap_kW" => device["connectionCapacity"],
