@@ -736,7 +736,7 @@ for b in eachrow(all_feeder)
     print("Feeder no: $i \n")
     #feeder="All_feeder/"*all_feeder[1,"conf"]
     file  = joinpath(BASE_DIR, "test/data/Spanish/")
-    data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59)
+    data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59) # @Arpan: is only timestep 59 used regardless of which timestep was listed in the all_feeder.csv file?
 
     push!(unc,length(data["sdata"])) # nr of lv+pv distributions considered --> unc
     push!(nodes,length(data["bus"])) # nr of buses --> nodes
