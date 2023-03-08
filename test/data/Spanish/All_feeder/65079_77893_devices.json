@@ -1,0 +1,21 @@
+{
+    "LVcustomers":[
+        {
+            "busId":2,
+            "coded_ean":"?0063028444",
+            "connectionCapacity":76.0,
+            "deviceId":0,
+            "device_profile_file":"Load profiles POLA/2020/profile_?0063028444_2020.csv",
+            "exclusiveNight":false,
+            "global_busId":252,
+            "phases":[
+                1,
+                2,
+                3
+            ],
+            "yearlyNetConsumption":5199.277429283632,
+            "yearlyNetReactiveConsumption":466.3098184684317
+        }
+    ],
+    "solarGens":[]
+}
