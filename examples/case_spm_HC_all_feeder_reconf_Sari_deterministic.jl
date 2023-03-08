@@ -257,7 +257,7 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
 
     open(dir * branches_file_name, "r") do io
         branches_json_dict = JSON.parse(io)
-        impedance_dict = Dict{String,Any}(
+        impedance_dict = Dict{String,Any}( # Units are ohm/km!!!
             "BT - Desconocido BT" => [0.21, 0.075],
             "BT - MANGUERA" => [0.3586, 0.089], #[1.23, 0.08],
             "BT - RV 0,6/1 KV 2*16 KAL" => [2.14, 0.09], #16 = 20 A
@@ -281,12 +281,13 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
             "BT - RZ 0,6/1 KV 3*70 ALM/54,6 AL" => [0.4539, 0.091],
             "BT - RZ 0,6/1 KV 3*95 AL/54,6 ALM" => [0.3586, 0.089],
             "BT - RZ 0,6/1 KV 4*16 AL" => [2.14, 0.09],
-            "aansluitkabel" => [1.15, 0.150]
+            "aansluitkabel" => [1.15, 0.150],
+            "unknown" => [0.01, 0.001]
         )
 
         open(dir * branches_file_name, "r") do io
             branches_json_dict = JSON.parse(io)
-            currentmax_dict = Dict{String,Any}(
+            currentmax_dict = Dict{String,Any}( # what are the units? amperes i guess
                 "BT - Desconocido BT" => 200,
                 "BT - MANGUERA" => 150, #200 certain  40.18#150
                 "BT - RV 0,6/1 KV 2*16 KAL" => 75,
@@ -310,7 +311,8 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
                 "BT - RZ 0,6/1 KV 3*70 ALM/54,6 AL" => 160,
                 "BT - RZ 0,6/1 KV 3*95 AL/54,6 ALM" => 230, # 182.21,
                 "BT - RZ 0,6/1 KV 4*16 AL" => 75,
-                "aansluitkabel" => 120 #200
+                "aansluitkabel" => 120, #200, 
+                "unknown" => 400 # i put something high so it doesn't restrict the solution
             )
 
 
