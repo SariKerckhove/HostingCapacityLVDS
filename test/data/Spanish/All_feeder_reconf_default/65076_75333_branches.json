@@ -1,0 +1,58 @@
+[
+    {
+        "branchId":0,
+        "cableLength":23.11,
+        "cableType":"BT - RV 0,6/1 KV 3(1*240 KAL) + 1*150 KAL",
+        "downBusId":1,
+        "global_directed_branchId":1970,
+        "global_downBusId":2100,
+        "global_upBusId":2099,
+        "r_ohm_per_km":0.160263,
+        "switch":true,
+        "type":"Cable",
+        "upBusId":0,
+        "x_ohm_per_km":0.079
+    },
+    {
+        "branchId":1,
+        "cableLength":149.0,
+        "cableType":"BT - RV 0,6/1 KV 3(1*240 KAL) + 1*150 KAL",
+        "downBusId":2,
+        "global_directed_branchId":1971,
+        "global_downBusId":2101,
+        "global_upBusId":2100,
+        "r_ohm_per_km":0.160263,
+        "switch":false,
+        "type":"Cable",
+        "upBusId":1,
+        "x_ohm_per_km":0.079
+    },
+    {
+        "branchId":2,
+        "cableLength":9.0,
+        "cableType":"BT - RV 0,6/1 KV 3(1*240 KAL) + 1*150 KAL",
+        "downBusId":3,
+        "global_directed_branchId":1972,
+        "global_downBusId":2102,
+        "global_upBusId":2101,
+        "r_ohm_per_km":0.160263,
+        "switch":true,
+        "type":"Cable",
+        "upBusId":2,
+        "x_ohm_per_km":0.079
+    },
+    {
+        "branchId":3,
+        "cableLength":0.01,
+        "cableType":"aansluitkabel",
+        "downBusId":4,
+        "global_directed_branchId":1973,
+        "global_downBusId":2103,
+        "global_upBusId":2102,
+        "r_ohm_per_km":1.15,
+        "switch":false,
+        "type":"Cable",
+        "upBusId":3,
+        "x_ohm_per_km":0.15
+    }
+]

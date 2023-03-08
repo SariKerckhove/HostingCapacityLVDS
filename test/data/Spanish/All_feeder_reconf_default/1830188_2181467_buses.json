@@ -1,0 +1,13 @@
+[
+    {
+        "X":5223.150000000023,
+        "Y":101981.3799999999,
+        "assignedNrHouseholds":0,
+        "busId":0,
+        "global_busId":3630,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"feeder237",
+        "slackBus":true,
+        "upperVoltageLimit":1.1
+    }
+]

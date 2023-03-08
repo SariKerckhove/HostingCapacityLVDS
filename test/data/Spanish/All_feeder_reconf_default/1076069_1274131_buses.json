@@ -1,0 +1,35 @@
+[
+    {
+        "X":5437.840000000026,
+        "Y":101983.3099999996,
+        "assignedNrHouseholds":0,
+        "busId":0,
+        "global_busId":2293,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"2500333",
+        "slackBus":true,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5452.489999999991,
+        "Y":101988.3499999996,
+        "assignedNrHouseholds":0,
+        "busId":1,
+        "global_busId":2294,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"2087053",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5452.479999999981,
+        "Y":101988.3499999996,
+        "assignedNrHouseholds":22,
+        "busId":2,
+        "global_busId":2295,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3721907",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    }
+]

@@ -1,0 +1,18 @@
+{
+    "gridConfig":{
+        "baseMVA":0.25,
+        "basekV":0.4,
+        "branches_file":"POLA/65052_1405054_branches.json",
+        "buses_file":"POLA/65052_1405054_buses.json",
+        "cabineName":"unknown",
+        "city":"POLA",
+        "connection_configuration":"star",
+        "devices_file":"POLA/65052_1405054_devices.json",
+        "id":1405054,
+        "name":93,
+        "reordered_feeder_id":93,
+        "slack_voltage":1,
+        "totalNrOfEANS":0,
+        "trafoId":65052
+    }
+}
