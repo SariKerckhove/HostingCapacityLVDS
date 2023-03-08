@@ -813,11 +813,11 @@ all_feeder[!,"nodes"]= nodes
 all_feeder[!, "unc"] = unc
 CSV.write("PV_HC_feeders_with_start.csv",all_feeder)
 
-scatter(all_feeder[all_feeder[!, :t_cc] .<500, :].unc, log10.(all_feeder[all_feeder[!, :t_cc] .<500, :].t_cc),label="gPC-CC-OPF", figsize=(28,8))
-# scatter!([1,2,3,4,5,6,7],[result_hc["solution"]["PV"]["$i"]["p_size"] for i=1:length(data["load"])],label="OPF HC", figsize=(28,8))
-plot!(xlabel="Uncertainties [-]")
-plot!(ylabel="log10 of computation time [sec]")
-plot!(title="Fig. 11: Boxplot of log_{10} of computational time for \text{gPC-\gls{cc}-\gls{opf}} in real LV feeders with respect to the number of uncertainties considered.")
+# scatter(all_feeder[all_feeder[!, :t_cc] .<500, :].unc, log10.(all_feeder[all_feeder[!, :t_cc] .<500, :].t_cc),label="gPC-CC-OPF", figsize=(28,8))
+# # scatter!([1,2,3,4,5,6,7],[result_hc["solution"]["PV"]["$i"]["p_size"] for i=1:length(data["load"])],label="OPF HC", figsize=(28,8))
+# plot!(xlabel="Uncertainties [-]")
+# plot!(ylabel="log10 of computation time [sec]")
+# plot!(title="Fig. 11: Boxplot of log_{10} of computational time for \text{gPC-\gls{cc}-\gls{opf}} in real LV feeders with respect to the number of uncertainties considered.")
 
 """
 #deterministic
