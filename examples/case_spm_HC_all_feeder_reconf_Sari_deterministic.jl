@@ -64,17 +64,17 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
     # device_df=CSV.read(dir*config_file_name[1:length(config_file_name)-19]*".csv", DataFrame) #csv file with categories.
 
     # dist_lv = CSV.read(dir * load_dist_csv, DataFrame) # load_dist_csv
-    # dist_pv = CSV.read(dir * pv_dist_csv, DataFrame)
-    # # dist_pv=CSV.read(dir*"beta_pm_2022_181"*".csv", DataFrame)
-    # dist_pv_ts = dist_pv[in([t_s]).(dist_pv.timeslot), :]
+    dist_pv = CSV.read(dir * pv_dist_csv, DataFrame)
+    # dist_pv=CSV.read(dir*"beta_pm_2022_181"*".csv", DataFrame)
+    dist_pv_ts = dist_pv[in([t_s]).(dist_pv.timeslot), :]
     # dist_lv_ts = dist_lv[in([t_s]).(dist_lv.timeslot), :]
     # # requires the csv file with categories.
 
     # dist_lv_ts_feeder = dist_lv_ts[in(unique(device_df.category)).(dist_lv_ts.cluster), :]
 
-    # s_dict = Dict()
+    s_dict = Dict()
 
-    # i = 1
+    i = 1
     # for dist in eachrow(dist_lv_ts_feeder)
     #     s = Dict()
     #     s["dst"] = "Beta"
@@ -88,17 +88,17 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
     # end
 
 
-    # ##add Irradiance if day time or there is some Irradiance
-    # if dist_pv_ts.upper[1] > 0
-    #     s = Dict()
-    #     s["dst"] = "Beta"
-    #     s["dst_id"] = 55
-    #     s["pa"] = dist_pv_ts[!, "alpha"][1]
-    #     s["pb"] = dist_pv_ts[!, "beta"][1]
-    #     s["pc"] = dist_pv_ts[!, "lower"][1]
-    #     s["pd"] = dist_pv_ts[!, "lower"][1] + dist_pv_ts[!, "upper"][1]
-    #     s_dict[string(i)] = s
-    # end
+    ##add Irradiance if day time or there is some Irradiance
+    if dist_pv_ts.upper[1] > 0
+        s = Dict()
+        s["dst"] = "Beta"
+        s["dst_id"] = 55
+        s["pa"] = dist_pv_ts[!, "alpha"][1]
+        s["pb"] = dist_pv_ts[!, "beta"][1]
+        s["pc"] = dist_pv_ts[!, "lower"][1]
+        s["pd"] = dist_pv_ts[!, "lower"][1] + dist_pv_ts[!, "upper"][1]
+        s_dict[string(i)] = s
+    end
 
 
     #network_model["is_kron_reduced"] = true
@@ -360,14 +360,13 @@ function build_mathematical_model_reconfiguration(dir, config_file_name, load_di
         end
     end
 
-
-    network_model["sdata"] =  0 # s_dict
+    network_model["sdata"] = s_dict
     network_model["curt"] = curt
 
     network_model["PV"] = deepcopy(network_model["load"])
-    [network_model["PV"][d]["μ"] = 0 for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["σ"] = 0  for d in keys(network_model["PV"])]# s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
-    [network_model["PV"][d]["pd"] = 0 for d in keys(network_model["PV"])] # s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["μ"] = s_dict[string(length(s_dict))]["pc"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["σ"] = s_dict[string(length(s_dict))]["pd"] for d in keys(network_model["PV"])]
+    [network_model["PV"][d]["pd"] = s_dict[string(length(s_dict))]["pd"] / 1e6 / power_base / 3 for d in keys(network_model["PV"])]
     return network_model
 end;
 
@@ -737,7 +736,7 @@ for b in eachrow(all_feeder)
     print("Feeder no: $i \n")
     #feeder="All_feeder/"*all_feeder[1,"conf"]
     file  = joinpath(BASE_DIR, "test/data/Spanish/")
-    data  = build_mathematical_model_single_phase(file, feeder,load_file, pv_file, t_s= 59)
+    data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59)
 
     push!(unc,length(data["sdata"])) # nr of lv+pv distributions considered --> unc
     push!(nodes,length(data["bus"])) # nr of buses --> nodes
