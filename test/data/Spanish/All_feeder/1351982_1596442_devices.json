@@ -297,7 +297,7 @@
             "yearlyNetReactiveConsumption":182.450875475187
         },
         {
-            "busId":14,
+            "busId":15,
             "coded_ean":"?0053300802",
             "connectionCapacity":50.0,
             "deviceId":19,
@@ -311,6 +311,20 @@
             ],
             "yearlyNetConsumption":5082.573280178424,
             "yearlyNetReactiveConsumption":522.9533257492001
+        },
+        {
+            "busId":20,
+            "coded_ean":"ZIV0034820906",
+            "connectionCapacity":5.5,
+            "deviceId":20,
+            "device_profile_file":"Load profiles POLA/2020/profile_ZIV0034820906_2020.csv",
+            "exclusiveNight":false,
+            "global_busId":3654,
+            "phases":[
+                1
+            ],
+            "yearlyNetConsumption":1588.657500408785,
+            "yearlyNetReactiveConsumption":113.1577194604111
         }
     ],
     "solarGens":[]

@@ -20,5 +20,38 @@
         "originalBusId":"1272753",
         "slackBus":false,
         "upperVoltageLimit":1.1
+    },
+    {
+        "X":5816.479999999981,
+        "Y":102078.2599999998,
+        "assignedNrHouseholds":0,
+        "busId":2,
+        "global_busId":1148,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"1272748",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5818.109999999986,
+        "Y":102081.6399999997,
+        "assignedNrHouseholds":0,
+        "busId":3,
+        "global_busId":1146,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"1272743",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5818.109999999986,
+        "Y":102081.6299999999,
+        "assignedNrHouseholds":8,
+        "busId":4,
+        "global_busId":1147,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3847655",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
     }
 ]

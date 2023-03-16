@@ -385,13 +385,79 @@
         "upperVoltageLimit":1.1
     },
     {
+        "X":5496.049999999988,
+        "Y":102060.0599999996,
+        "assignedNrHouseholds":0,
+        "busId":35,
+        "global_busId":497,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3419148",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
         "X":5475.289999999979,
         "Y":102064.0599999996,
         "assignedNrHouseholds":0,
-        "busId":35,
+        "busId":36,
         "global_busId":3351,
         "lowerVoltageLimit":0.9,
         "originalBusId":"3833459",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5495.940000000002,
+        "Y":102059.0199999996,
+        "assignedNrHouseholds":0,
+        "busId":37,
+        "global_busId":496,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3419147",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5497.169999999984,
+        "Y":102060.6500000004,
+        "assignedNrHouseholds":0,
+        "busId":38,
+        "global_busId":495,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3419150",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5495.0,
+        "Y":102060.1799999997,
+        "assignedNrHouseholds":0,
+        "busId":39,
+        "global_busId":498,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3419146",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5494.039999999979,
+        "Y":102060.9800000004,
+        "assignedNrHouseholds":0,
+        "busId":40,
+        "global_busId":499,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3419144",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5494.030000000028,
+        "Y":102060.9800000004,
+        "assignedNrHouseholds":19,
+        "busId":41,
+        "global_busId":500,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3832797",
         "slackBus":false,
         "upperVoltageLimit":1.1
     }

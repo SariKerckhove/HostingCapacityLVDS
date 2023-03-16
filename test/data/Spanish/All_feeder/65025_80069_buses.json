@@ -374,21 +374,10 @@
         "upperVoltageLimit":1.1
     },
     {
-        "X":5497.169999999984,
-        "Y":102060.6500000004,
-        "assignedNrHouseholds":0,
-        "busId":34,
-        "global_busId":495,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3419150",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
         "X":5514.239999999991,
         "Y":102059.5199999996,
         "assignedNrHouseholds":0,
-        "busId":35,
+        "busId":34,
         "global_busId":501,
         "lowerVoltageLimit":0.9,
         "originalBusId":"933924",
@@ -399,7 +388,7 @@
         "X":5518.039999999979,
         "Y":102058.9800000004,
         "assignedNrHouseholds":0,
-        "busId":36,
+        "busId":35,
         "global_busId":503,
         "lowerVoltageLimit":0.9,
         "originalBusId":"933929",
@@ -407,21 +396,10 @@
         "upperVoltageLimit":1.1
     },
     {
-        "X":5495.940000000002,
-        "Y":102059.0199999996,
-        "assignedNrHouseholds":0,
-        "busId":37,
-        "global_busId":496,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3419147",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
         "X":5514.239999999991,
         "Y":102059.5099999998,
         "assignedNrHouseholds":17,
-        "busId":38,
+        "busId":36,
         "global_busId":502,
         "lowerVoltageLimit":0.9,
         "originalBusId":"3833784",
@@ -432,54 +410,10 @@
         "X":5518.039999999979,
         "Y":102058.9699999997,
         "assignedNrHouseholds":14,
-        "busId":39,
+        "busId":37,
         "global_busId":504,
         "lowerVoltageLimit":0.9,
         "originalBusId":"3833711",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
-        "X":5496.049999999988,
-        "Y":102060.0599999996,
-        "assignedNrHouseholds":0,
-        "busId":40,
-        "global_busId":497,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3419148",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
-        "X":5495.0,
-        "Y":102060.1799999997,
-        "assignedNrHouseholds":0,
-        "busId":41,
-        "global_busId":498,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3419146",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
-        "X":5494.039999999979,
-        "Y":102060.9800000004,
-        "assignedNrHouseholds":0,
-        "busId":42,
-        "global_busId":499,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3419144",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
-        "X":5494.030000000028,
-        "Y":102060.9800000004,
-        "assignedNrHouseholds":19,
-        "busId":43,
-        "global_busId":500,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3832797",
         "slackBus":false,
         "upperVoltageLimit":1.1
     }

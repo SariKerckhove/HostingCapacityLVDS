@@ -1085,7 +1085,7 @@
             "yearlyNetReactiveConsumption":147.2315148500552
         },
         {
-            "busId":18,
+            "busId":17,
             "coded_ean":"ZIV0034795299",
             "connectionCapacity":4.9,
             "deviceId":76,
@@ -1099,7 +1099,7 @@
             "yearlyNetReactiveConsumption":109.9226804469472
         },
         {
-            "busId":25,
+            "busId":24,
             "coded_ean":"ZIV0034795545",
             "connectionCapacity":5.5,
             "deviceId":77,
@@ -1113,7 +1113,7 @@
             "yearlyNetReactiveConsumption":157.2183464349613
         },
         {
-            "busId":30,
+            "busId":29,
             "coded_ean":"ZIV0034795538",
             "connectionCapacity":3.3,
             "deviceId":78,
@@ -1127,7 +1127,7 @@
             "yearlyNetReactiveConsumption":171.0139347541608
         },
         {
-            "busId":32,
+            "busId":31,
             "coded_ean":"SAG0125360052",
             "connectionCapacity":4.4,
             "deviceId":79,
@@ -1141,7 +1141,7 @@
             "yearlyNetReactiveConsumption":120.8013404676653
         },
         {
-            "busId":33,
+            "busId":32,
             "coded_ean":"ZIV0034813803",
             "connectionCapacity":4.4,
             "deviceId":80,
@@ -1155,7 +1155,7 @@
             "yearlyNetReactiveConsumption":144.5970018492831
         },
         {
-            "busId":38,
+            "busId":37,
             "coded_ean":"ZIV0034813798",
             "connectionCapacity":3.3,
             "deviceId":81,
@@ -1169,7 +1169,7 @@
             "yearlyNetReactiveConsumption":130.3445400714611
         },
         {
-            "busId":40,
+            "busId":39,
             "coded_ean":"ZIV0034813804",
             "connectionCapacity":3.3,
             "deviceId":82,
@@ -1183,7 +1183,7 @@
             "yearlyNetReactiveConsumption":143.3583254264385
         },
         {
-            "busId":41,
+            "busId":40,
             "coded_ean":"ZIV0034861801",
             "connectionCapacity":3.3,
             "deviceId":83,
@@ -1197,7 +1197,7 @@
             "yearlyNetReactiveConsumption":121.2511816320898
         },
         {
-            "busId":42,
+            "busId":41,
             "coded_ean":"ZIV0034861799",
             "connectionCapacity":4.4,
             "deviceId":84,

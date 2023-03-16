@@ -12,7 +12,7 @@
         "name":100,
         "reordered_feeder_id":100,
         "slack_voltage":1,
-        "totalNrOfEANS":0,
+        "totalNrOfEANS":35,
         "trafoId":65052
     }
 }
