@@ -725,6 +725,9 @@ nodes=[]
 consumers=[]
 unc=[]
 
+device_ean_list = []
+p_size_list = []
+
 global i=0
 for b in eachrow(all_feeder)
     feeder="All_feeder/"*b.conf
@@ -807,7 +810,16 @@ for b in eachrow(all_feeder)
         push!(hc3,-1)
         push!(t_opf, result_hc["solve_time"])
     end
+
+    for k in keys(data["PV"])
+        push!(device_ean_list, data["PV"][k]["source_id"])
+        push!(p_size_list, result_hc["solution"]["PV"][k]["p_size"])
+    end
 end
+
+device_psize_df = DataFrame(device_ean = device_ean_list, p_size = p_size_list)
+CSV.write("PV_HC_per_device_deterministic.csv",string.(device_psize_df))
+
 
 # all_feeder[!,"HC0"]=hc1 # stochastic
 # all_feeder[!,"HC_CC"]=hc2 # homogeneous?
