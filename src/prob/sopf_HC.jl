@@ -233,6 +233,60 @@ function build_sopf_hc_deterministic(pm::AbstractPowerModel)
     #objective_max_PV_equal_for_all_consumer(pm)
 end
 
+""
+function build_sopf_hc_deterministic_equal_pv(pm::AbstractPowerModel)
+    for (n, network) in _PM.nws(pm) 
+        _PM.variable_bus_voltage_real(pm, nw=n,bounded=false)
+        _PM.variable_bus_voltage_imaginary(pm, nw=n, bounded=false)
+        variable_branch_current_det(pm, nw=n, bounded=false)
+        variable_bus_voltage_squared_det(pm, nw=n)
+        variable_gen_power(pm, nw=n)                             # enforcing bounds alters the objective 
+        variable_gen_current(pm, nw=n, bounded=false)                           # enforcing bounds makes problem infeasible
+        variable_load_current(pm, nw=n, bounded=false)
+        variable_PV_current(pm, nw=n, bounded=false)
+        variable_PV_size(pm, nw=n, bounded=true)
+
+    end
+
+    for (n, network) in _PM.nws(pm)
+        for i in _PM.ids(pm, :ref_buses, nw=n)
+            constraint_bus_voltage_ref(pm, i, nw=n)
+        end
+
+        for i in _PM.ids(pm, :bus, nw=n)
+            constraint_current_balance_with_PV_det(pm, i, nw=n)
+            constraint_bus_voltage_squared(pm, i, nw=n)
+        end
+
+        for b in _PM.ids(pm, :branch, nw=n)
+            _PM.constraint_current_from(pm, b, nw=n)
+            _PM.constraint_current_to(pm, b, nw=n)
+
+            _PM.constraint_voltage_drop(pm, b, nw=n)
+
+            _PM.constraint_thermal_limit_from(pm, b, nw=n)
+            _PM.constraint_thermal_limit_to(pm, b, nw=n)
+        end
+
+        for g in _PM.ids(pm, :gen, nw=n)
+            constraint_det_gen_power(pm, g, nw=n)
+        end
+
+        for l in _PM.ids(pm, :load, nw=n)
+            constraint_det_load_power(pm, l, nw=n)
+        end
+
+        for p in _PM.ids(pm, :PV, nw=n)
+            constraint_det_pv_power(pm, p, nw=n)
+            
+            #constraint_gp_pv_power_eq_PV(pm, p, nw=n)
+        end
+    end
+
+    objective_max_PV_det(pm)
+    #objective_min_PV_det(pm)
+    #objective_max_PV_equal_for_all_consumer(pm)
+end
 
 
 ""
