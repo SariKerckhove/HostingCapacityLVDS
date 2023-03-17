@@ -166,33 +166,5 @@
         "type":"Cable",
         "upBusId":11,
         "x_ohm_per_km":0.15
-    },
-    {
-        "branchId":12,
-        "cableLength":41.81,
-        "cableType":"BT - RV 0,6/1 KV 3(1*150 KAL) + 1*95 KAL",
-        "downBusId":13,
-        "global_directed_branchId":765,
-        "global_downBusId":804,
-        "global_upBusId":802,
-        "r_ohm_per_km":0.230905,
-        "switch":true,
-        "type":"Cable",
-        "upBusId":11,
-        "x_ohm_per_km":0.085
-    },
-    {
-        "branchId":13,
-        "cableLength":0.01,
-        "cableType":"aansluitkabel",
-        "downBusId":14,
-        "global_directed_branchId":766,
-        "global_downBusId":805,
-        "global_upBusId":804,
-        "r_ohm_per_km":1.15,
-        "switch":false,
-        "type":"Cable",
-        "upBusId":13,
-        "x_ohm_per_km":0.15
     }
 ]

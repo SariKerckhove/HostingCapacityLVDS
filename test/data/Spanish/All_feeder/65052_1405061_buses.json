@@ -165,21 +165,10 @@
         "upperVoltageLimit":1.1
     },
     {
-        "X":5576.280000000028,
-        "Y":102321.0899999999,
-        "assignedNrHouseholds":0,
-        "busId":15,
-        "global_busId":1662,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"1237805",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
         "X":5596.320000000007,
         "Y":102257.0999999996,
         "assignedNrHouseholds":0,
-        "busId":16,
+        "busId":15,
         "global_busId":1707,
         "lowerVoltageLimit":0.9,
         "originalBusId":"1546418",
@@ -190,7 +179,7 @@
         "X":5590.760000000009,
         "Y":102253.0700000003,
         "assignedNrHouseholds":0,
-        "busId":17,
+        "busId":16,
         "global_busId":1711,
         "lowerVoltageLimit":0.9,
         "originalBusId":"1546417",
@@ -198,21 +187,10 @@
         "upperVoltageLimit":1.1
     },
     {
-        "X":5592.590000000026,
-        "Y":102321.2699999996,
-        "assignedNrHouseholds":0,
-        "busId":18,
-        "global_busId":1660,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"2578357",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
         "X":5603.030000000028,
         "Y":102261.9400000004,
         "assignedNrHouseholds":0,
-        "busId":19,
+        "busId":17,
         "global_busId":1708,
         "lowerVoltageLimit":0.9,
         "originalBusId":"2577003",
@@ -223,7 +201,7 @@
         "X":5590.770000000019,
         "Y":102253.0599999996,
         "assignedNrHouseholds":13,
-        "busId":20,
+        "busId":18,
         "global_busId":1712,
         "lowerVoltageLimit":0.9,
         "originalBusId":"3794110",
@@ -231,21 +209,10 @@
         "upperVoltageLimit":1.1
     },
     {
-        "X":5592.590000000026,
-        "Y":102321.2599999998,
-        "assignedNrHouseholds":19,
-        "busId":21,
-        "global_busId":1661,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3772985",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
         "X":5603.030000000028,
         "Y":102261.9299999997,
         "assignedNrHouseholds":11,
-        "busId":22,
+        "busId":19,
         "global_busId":1709,
         "lowerVoltageLimit":0.9,
         "originalBusId":"3741790",
@@ -256,10 +223,65 @@
         "X":5611.659999999974,
         "Y":102269.4299999997,
         "assignedNrHouseholds":0,
-        "busId":23,
+        "busId":20,
         "global_busId":1710,
         "lowerVoltageLimit":0.9,
         "originalBusId":"1237785",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5612.229999999981,
+        "Y":102269.8499999996,
+        "assignedNrHouseholds":0,
+        "busId":21,
+        "global_busId":1674,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"1237800",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5616.0,
+        "Y":102271.3200000003,
+        "assignedNrHouseholds":0,
+        "busId":22,
+        "global_busId":1672,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"2579380",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5620.119999999995,
+        "Y":102274.3099999996,
+        "assignedNrHouseholds":0,
+        "busId":23,
+        "global_busId":1670,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"2578437",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5616.0,
+        "Y":102271.3099999996,
+        "assignedNrHouseholds":1,
+        "busId":24,
+        "global_busId":1673,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3772534",
+        "slackBus":false,
+        "upperVoltageLimit":1.1
+    },
+    {
+        "X":5620.119999999995,
+        "Y":102274.2999999998,
+        "assignedNrHouseholds":8,
+        "busId":25,
+        "global_busId":1671,
+        "lowerVoltageLimit":0.9,
+        "originalBusId":"3772577",
         "slackBus":false,
         "upperVoltageLimit":1.1
     }

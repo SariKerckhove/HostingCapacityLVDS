@@ -1,0 +1,16 @@
+[
+    {
+        "branchId":0,
+        "cableLength":1.0,
+        "cableType":"unknown",
+        "downBusId":1,
+        "global_directed_branchId":3671,
+        "global_downBusId":2812,
+        "global_upBusId":3699,
+        "r_ohm_per_km":0.01,
+        "switch":true,
+        "type":"Cable",
+        "upBusId":0,
+        "x_ohm_per_km":0.001
+    }
+]

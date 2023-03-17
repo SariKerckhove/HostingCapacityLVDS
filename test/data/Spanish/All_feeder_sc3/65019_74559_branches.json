@@ -1,0 +1,44 @@
+[
+    {
+        "branchId":0,
+        "cableLength":15.0,
+        "cableType":"BT - Desconocido BT",
+        "downBusId":1,
+        "global_directed_branchId":1896,
+        "global_downBusId":2019,
+        "global_upBusId":2018,
+        "r_ohm_per_km":0.21,
+        "switch":true,
+        "type":"Cable",
+        "upBusId":0,
+        "x_ohm_per_km":0.075
+    },
+    {
+        "branchId":1,
+        "cableLength":4.0,
+        "cableType":"BT - Desconocido BT",
+        "downBusId":2,
+        "global_directed_branchId":1897,
+        "global_downBusId":2020,
+        "global_upBusId":2019,
+        "r_ohm_per_km":0.21,
+        "switch":true,
+        "type":"Cable",
+        "upBusId":1,
+        "x_ohm_per_km":0.075
+    },
+    {
+        "branchId":2,
+        "cableLength":0.01,
+        "cableType":"aansluitkabel",
+        "downBusId":3,
+        "global_directed_branchId":1898,
+        "global_downBusId":2021,
+        "global_upBusId":2020,
+        "r_ohm_per_km":1.15,
+        "switch":false,
+        "type":"Cable",
+        "upBusId":2,
+        "x_ohm_per_km":0.15
+    }
+]

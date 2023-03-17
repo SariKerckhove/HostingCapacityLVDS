@@ -141,27 +141,5 @@
         "originalBusId":"3765215",
         "slackBus":false,
         "upperVoltageLimit":1.1
-    },
-    {
-        "X":5428.109999999986,
-        "Y":102351.96,
-        "assignedNrHouseholds":0,
-        "busId":13,
-        "global_busId":804,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"2450866",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
-    },
-    {
-        "X":5428.099999999977,
-        "Y":102351.9500000002,
-        "assignedNrHouseholds":16,
-        "busId":14,
-        "global_busId":805,
-        "lowerVoltageLimit":0.9,
-        "originalBusId":"3765293",
-        "slackBus":false,
-        "upperVoltageLimit":1.1
     }
 ]

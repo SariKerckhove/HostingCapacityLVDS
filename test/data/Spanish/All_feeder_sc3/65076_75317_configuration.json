@@ -1,0 +1,18 @@
+{
+    "gridConfig":{
+        "baseMVA":0.25,
+        "basekV":0.4,
+        "branches_file":"POLA/65076_75317_branches.json",
+        "buses_file":"POLA/65076_75317_buses.json",
+        "cabineName":"unknown",
+        "city":"POLA",
+        "connection_configuration":"star",
+        "devices_file":"POLA/65076_75317_devices.json",
+        "id":75317,
+        "name":126,
+        "reordered_feeder_id":126,
+        "slack_voltage":1,
+        "totalNrOfEANS":56,
+        "trafoId":65076
+    }
+}

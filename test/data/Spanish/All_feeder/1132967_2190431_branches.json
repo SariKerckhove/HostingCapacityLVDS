@@ -841,23 +841,9 @@
     },
     {
         "branchId":60,
-        "cableLength":11.0,
-        "cableType":"BT - RV 0,6/1 KV 3(1*150 KAL) + 1*95 KAL",
-        "downBusId":61,
-        "global_directed_branchId":-3497,
-        "global_downBusId":3745,
-        "global_upBusId":3747,
-        "r_ohm_per_km":0.230905,
-        "switch":true,
-        "type":"Cable",
-        "upBusId":58,
-        "x_ohm_per_km":0.085
-    },
-    {
-        "branchId":61,
         "cableLength":0.01,
         "cableType":"aansluitkabel",
-        "downBusId":62,
+        "downBusId":61,
         "global_directed_branchId":3498,
         "global_downBusId":3748,
         "global_upBusId":3747,
@@ -868,10 +854,10 @@
         "x_ohm_per_km":0.15
     },
     {
-        "branchId":62,
+        "branchId":61,
         "cableLength":0.01,
         "cableType":"aansluitkabel",
-        "downBusId":63,
+        "downBusId":62,
         "global_directed_branchId":3503,
         "global_downBusId":3753,
         "global_upBusId":3752,
@@ -879,48 +865,6 @@
         "switch":false,
         "type":"Cable",
         "upBusId":60,
-        "x_ohm_per_km":0.15
-    },
-    {
-        "branchId":63,
-        "cableLength":9.0,
-        "cableType":"BT - RV 0,6/1 KV 3(1*150 KAL) + 1*95 KAL",
-        "downBusId":64,
-        "global_directed_branchId":-3495,
-        "global_downBusId":3743,
-        "global_upBusId":3745,
-        "r_ohm_per_km":0.230905,
-        "switch":true,
-        "type":"Cable",
-        "upBusId":61,
-        "x_ohm_per_km":0.085
-    },
-    {
-        "branchId":64,
-        "cableLength":0.01,
-        "cableType":"aansluitkabel",
-        "downBusId":65,
-        "global_directed_branchId":3496,
-        "global_downBusId":3746,
-        "global_upBusId":3745,
-        "r_ohm_per_km":1.15,
-        "switch":false,
-        "type":"Cable",
-        "upBusId":61,
-        "x_ohm_per_km":0.15
-    },
-    {
-        "branchId":65,
-        "cableLength":0.01,
-        "cableType":"aansluitkabel",
-        "downBusId":66,
-        "global_directed_branchId":3494,
-        "global_downBusId":3744,
-        "global_upBusId":3743,
-        "r_ohm_per_km":1.15,
-        "switch":false,
-        "type":"Cable",
-        "upBusId":64,
         "x_ohm_per_km":0.15
     }
 ]
