@@ -8,26 +8,10 @@ device_psize_default_df=CSV.read("PV_HC_per_device_deterministic_default.csv",Da
 device_psize_sc2_df=CSV.read("PV_HC_per_device_deterministic_sc2.csv", DataFrame,header=1) 
 # I discovered that some device names occur twice per dataframe, i don't understand why.
 # this is the reason that the innerjoin has more lines than the separate dataframes.
-# I'm going to ignore this, it's normally not going to hugely effect the outcome. 
 
-# maybe take the inner set? DT[in([1,4]).(DT.ID), :]
-function dropduplicates(df, cols; keep = :first)
-    keep in [:first, :last] || error("keep parameter should be :first or :last")
-    combine(groupby(df, cols)) do sdf
-        if nrow(sdf) == 1 
-            DataFrame()
-        else
-            DataFrame(
-              filter(
-                r->rownumber(r)==(keep == :first ? 1 : nrow(sdf)), 
-                eachrow(sdf)
-              )
-            )
-        end
-    end
-end
+# for now, i will only keep the unique device_eans
 
-
+# help from Tamas:
 #See what are the duplicates
 #filter(x->x.nrow!=1,combine(groupby(device_psize_default_df,:device_ean), nrow))
 #To see the range of values in between in the device id_s
@@ -45,12 +29,24 @@ device_psize_compare_df = innerjoin(keep_unique(device_psize_default_df), keep_u
 
 
 
-HC_improvement_fractions = device_psize_compare_df.p_size_sc2 .- device_psize_compare_df.p_size_default
+HC_improvement = device_psize_compare_df.p_size_sc2 .- device_psize_compare_df.p_size_default
 
 
-# plot cdf
-n = length(HC_improvement_fractions)
+# plot cdf of HC improvement
+n = length(HC_improvement)
 
-p = plot(sort(HC_improvement_fractions), (1:n)./n, 
+p = plot(sort(HC_improvement), (1:n)./n, 
     xlabel = "PV HC improvement of individual device", ylabel = "fraction of devices", 
     title = "Cumulative Distribution", label = "")
+
+savefig(p,"plot.pdf")
+
+
+# plot cdf default HC per device
+n = length(device_psize_default_df.p_size)
+
+p = plot(sort(device_psize_default_df.p_size), (1:n)./n, 
+    xlabel = "PV HC of individual device in default configuration", ylabel = "fraction of devices", 
+    title = "Cumulative Distribution", label = "")
+
+savefig(p,"plot_default.pdf")
