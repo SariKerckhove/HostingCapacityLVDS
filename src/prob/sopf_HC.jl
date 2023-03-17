@@ -277,13 +277,13 @@ function build_sopf_hc_deterministic_equal_pv(pm::AbstractPowerModel)
         end
 
         for p in _PM.ids(pm, :PV, nw=n)
-            constraint_det_pv_power(pm, p, nw=n)
-            
+            # constraint_det_pv_power(pm, p, nw=n)
+            constraint_det_pv_power_eq_PV(pm, p, nw=n)
             #constraint_gp_pv_power_eq_PV(pm, p, nw=n)
         end
     end
-
-    objective_max_PV_det(pm)
+    
+    objective_max_PV_det_equal_for_all_consumer(pm)
     #objective_min_PV_det(pm)
     #objective_max_PV_equal_for_all_consumer(pm)
 end

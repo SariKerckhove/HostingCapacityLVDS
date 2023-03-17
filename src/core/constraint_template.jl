@@ -263,6 +263,20 @@ function constraint_det_pv_power(pm::AbstractPowerModel, p::Int; nw::Int=nw_id_d
     constraint_det_pv_power_imaginary(pm, nw, i, p, qd, p_size; curt=c)
 end
 
+function constraint_det_pv_power_eq_pv(pm::AbstractPowerModel, p::Int; nw::Int=nw_id_default)
+    i   = _PM.ref(pm, nw, :PV, p, "load_bus") 
+
+    pd  = _PM.ref(pm, nw, :PV, p, "pd")
+    qd  = _PM.ref(pm, nw, :PV, p, "qd")
+
+    p_size= _PM.var(pm, nw, :p_size,1)
+
+    c = pm.data["curt"]
+
+    constraint_det_pv_power_real(pm, nw, i, p, pd, p_size; curt=c)
+    constraint_det_pv_power_imaginary(pm, nw, i, p, qd, p_size; curt=c)
+end
+
 
 #for Powerflow
 function constraint_pf_pv_power(pm::AbstractPowerModel, p::Int; nw::Int=nw_id_default)
