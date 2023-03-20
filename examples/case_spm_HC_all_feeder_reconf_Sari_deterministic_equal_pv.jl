@@ -743,14 +743,14 @@ for b in eachrow(all_feeder)
     file  = joinpath(BASE_DIR, "test/data/Spanish/")
     data  = build_mathematical_model_reconfiguration(file, feeder,load_file, pv_file, t_s= 59) # @Arpan: is only timestep 59 used regardless of which timestep was listed in the all_feeder.csv file?
 
+
     push!(unc,length(data["sdata"])) # nr of lv+pv distributions considered --> unc
     push!(nodes,length(data["bus"])) # nr of buses --> nodes
     push!(consumers,length(data["load"])) # nr of devices --> consumers
     
     [data["bus"]["$i"]["vmin"]=0.8 for i=1:length(data["bus"])] # @arpan why do we set all vmin to 0.8?
 
-    global result_hc= SPM.run_sopf_hc_equal_pv(data, PM.IVRPowerModel, ipopt_solver, aux=aux, deg=deg, red=r; setting=s2, stochastic=false)
-    break
+    result_hc= SPM.run_sopf_hc_equal_pv(data, PM.IVRPowerModel, ipopt_solver, aux=aux, deg=deg, red=r; setting=s2, stochastic=false)
    
     #start up
     [data["PV"]["$i"]["p_size_start"]=result_hc["solution"]["PV"]["$i"]["p_size"] for i=1:length(data["PV"])]
