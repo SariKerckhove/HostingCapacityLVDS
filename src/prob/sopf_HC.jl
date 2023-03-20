@@ -97,15 +97,20 @@ function build_sopf_hc(pm::AbstractPowerModel)
 end
 
 ""
-function run_sopf_hc_equal_pv(data::Dict, model_constructor, optimizer; aux::Bool=true, deg::Int=1, red::Bool=false, solution_processors=[sol_data_model!], kwargs...)
+function run_sopf_hc_equal_pv(data::Dict, model_constructor, optimizer; aux::Bool=true, deg::Int=1, red::Bool=false,stochastic::Bool=true, solution_processors=[sol_data_model!], kwargs...)
     @assert _IM.ismultinetwork(data) == false "The data supplied is multinetwork, it should be single-network"
     @assert model_constructor <: _PM.AbstractIVRModel "This problem type only supports the IVRModel"
-    sdata = build_stochastic_data_hc(data, deg)
-    if aux && !red #only with aux and without reduced variable
-        result = _PM.run_model(sdata, model_constructor, optimizer, build_sopf_hc_equal_pv; multinetwork=true, solution_processors=solution_processors, kwargs...)
+    if stochastic
+        sdata = build_stochastic_data_hc(data, deg)
+        if aux && !red #only with aux and without reduced variable
+            result = _PM.run_model(sdata, model_constructor, optimizer, build_sopf_hc_equal_pv; multinetwork=true, solution_processors=solution_processors, kwargs...)
+        end
+        result["mop"] = sdata["mop"]
+    else
+        result = _PM.run_model(data, model_constructor, optimizer, build_sopf_hc_deterministic_equal_pv; multinetwork=false, solution_processors=solution_processors, kwargs...)
     end
-    result["mop"] = sdata["mop"]
     return result
+
 end
 
 ""
@@ -282,7 +287,7 @@ function build_sopf_hc_deterministic_equal_pv(pm::AbstractPowerModel)
             #constraint_gp_pv_power_eq_PV(pm, p, nw=n)
         end
     end
-    
+
     objective_max_PV_det_equal_for_all_consumer(pm)
     #objective_min_PV_det(pm)
     #objective_max_PV_equal_for_all_consumer(pm)
