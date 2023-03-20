@@ -103,9 +103,13 @@ function objective_max_PV_det_equal_for_all_consumer(pm::AbstractPowerModel; kwa
     # return JuMP.@objective(pm.model, Max,
     #         sum(p_size[p] for p in _PM.ids(pm, :PV))
     # )
-
-    return JuMP.@objective(pm.model, Max,
-    p_size[1]
-    )
+    if length(p_size)==0
+        return JuMP.@objective(pm.model, Max,
+        0)
+    else
+        return JuMP.@objective(pm.model, Max,
+        p_size[1])
+    end
+    
 
 end
