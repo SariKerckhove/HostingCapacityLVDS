@@ -805,7 +805,7 @@ for b in eachrow(all_feeder)
     # end
      
     if result_hc["termination_status"]== PM.LOCALLY_SOLVED
-        push!(hc3,result_hc["objective"]) # deterministic
+        push!(hc3,result_hc["objective"]*length(data["PV"])) # deterministic
         push!(t_opf, result_hc["solve_time"])
     else
         push!(hc3,-1)
@@ -814,24 +814,24 @@ for b in eachrow(all_feeder)
 
     for k in keys(data["PV"])
         push!(device_ean_list, data["PV"][k]["source_id"])
-        push!(p_size_list, result_hc["solution"]["PV"][k]["p_size"])
+        push!(p_size_list, result_hc["solution"]["PV"]["1"]["p_size"]) # only 1 of the variables is used and contains the psize for each device (the others have no meaning)
     end
 end
 
 device_psize_df = DataFrame(device_ean = device_ean_list, p_size = p_size_list)
-CSV.write("PV_HC_per_device_deterministic.csv",string.(device_psize_df))
+CSV.write("PV_HC_per_device_deterministic_homogeneous.csv",string.(device_psize_df))
 
 
-# # all_feeder[!,"HC0"]=hc1 # stochastic
-# # all_feeder[!,"HC_CC"]=hc2 # homogeneous?
-# all_feeder[!,"HC_OPF"]=hc3 # deterministic
-# all_feeder[!,"t_opf"]=t_opf
-# # all_feeder[!,"t_cc"]=t_cc
-# all_feeder[!,"consumers"]=consumers
-# all_feeder[!,"nodes"]= nodes
-# all_feeder[!, "unc"] = unc
+# all_feeder[!,"HC0"]=hc1 # stochastic
+# all_feeder[!,"HC_CC"]=hc2 # homogeneous?
+all_feeder[!,"HC_OPF"]=hc3 # deterministic
+all_feeder[!,"t_opf"]=t_opf
+# all_feeder[!,"t_cc"]=t_cc
+all_feeder[!,"consumers"]=consumers
+all_feeder[!,"nodes"]= nodes
+all_feeder[!, "unc"] = unc
 
-# CSV.write("PV_HC_feeders_with_start_deterministic.csv",string.(all_feeder))
+CSV.write("PV_HC_feeders_with_start_deterministic_homogeneous.csv",string.(all_feeder))
 
 # scatter(all_feeder[all_feeder[!, :t_cc] .<500, :].unc, log10.(all_feeder[all_feeder[!, :t_cc] .<500, :].t_cc),label="gPC-CC-OPF", figsize=(28,8))
 # # scatter!([1,2,3,4,5,6,7],[result_hc["solution"]["PV"]["$i"]["p_size"] for i=1:length(data["load"])],label="OPF HC", figsize=(28,8))
